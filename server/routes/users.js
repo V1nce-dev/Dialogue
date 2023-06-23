@@ -3,7 +3,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../model/usermodel");
 
-router.get("*", async (_, res) => {
+router.get("/", async (_, res) => {
     try {
         const users = await User.find();
         res.json(users)

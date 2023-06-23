@@ -9,7 +9,7 @@ userDB()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use("/api/users", require("./routes/users"))
+app.use("/api/users/", require("./routes/users"))
 
 app.listen(port, () => {
     console.log(`running on port ${port}`);
