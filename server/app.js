@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require("express")
 const app = express()
 const userDB = require("./config/userdb")
-const port = process.env.PORT || 8080
+const port = 8080
 
 userDB()
 
