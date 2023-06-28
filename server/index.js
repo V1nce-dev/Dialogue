@@ -4,9 +4,11 @@ const express = require("express")
 const app = express()
 const userDB = require("./config/userdb")
 const port = 8080
+const cors = reuqire("cors")
 
 userDB()
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use("/api/users/", require("./routes/users"))
