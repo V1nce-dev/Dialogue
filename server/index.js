@@ -4,7 +4,7 @@ const express = require("express")
 const app = express()
 const userDB = require("./config/userdb")
 const port = 8080
-const cors = reuqire("cors")
+const cors = require("cors")
 
 userDB()
 
