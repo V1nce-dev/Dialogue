@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState } from "react";
 import { useRouter } from "next/navigation"
 
@@ -12,7 +12,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`https://dialogue-api.vercel.app/api/users/register`, {
+      const res = await fetch(`https://dialogue-api.vercel.app/api/users/authenticate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +25,8 @@ const RegisterForm = () => {
         throw new Error(data.message);
       }
 
-      router.push("/authenticate");
+      router.push("/");
+
       setUsername("");
       setPassword("");
     } catch (err) {
@@ -50,7 +51,7 @@ const RegisterForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button type="submit">Authenticate</button>
       </form>
       {error && <p>{error}</p>}
     </div>
