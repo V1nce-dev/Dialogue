@@ -3,16 +3,6 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../model/usermodel");
 
-router.get("/", async (_, res) => {
-    try {
-        const users = await User.find();
-        res.json(users)
-    } catch (error) {
-        return res.status(500).json({ message: "There was an error" })
-    }
-});
-
-
 router.post("/register", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -34,7 +24,9 @@ router.post("/register", async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: "Error in registration" });
     }
+
 });
+
 
 router.post("/authenticate", async (req, res) => {
     try {
