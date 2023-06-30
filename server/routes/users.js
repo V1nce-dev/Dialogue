@@ -27,21 +27,18 @@ router.post("/register", async (req, res) => {
 
 });
 
-
 router.post("/authenticate", async (req, res) => {
     try {
         const { username, password } = req.body;
 
         let user = await User.findOne({ username });
         if (!user) {
-            return res
-                .status(401)
-                .json({ message: "Authentication failed. User not found." });
+            return res.status(401).json({ message: "Authentication failed. User not found." });
         }
 
         const isPasswordValid = await user.comparePassword(password);
         if (!isPasswordValid) {
-            return res.json({ message: "Authentication failed. Invalid password." });
+            return res.status(401).json({ message: "Authentication failed. Invalid password." });
         }
 
         const payload = { userId: user._id };
@@ -55,4 +52,3 @@ router.post("/authenticate", async (req, res) => {
     }
 });
 
-module.exports = router;
