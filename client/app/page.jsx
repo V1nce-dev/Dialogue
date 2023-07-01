@@ -1,9 +1,11 @@
-const Page = () => {
+import NavBar from "@/components/nav/navbar";
+
+const page = () => {
   return (
     <div>
-      Hello World
+      <NavBar/>
     </div>
   )
 }
 
-export default Page;
+export default page;
