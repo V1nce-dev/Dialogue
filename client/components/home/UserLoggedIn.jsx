@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const IsLoggedIn = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,11 +25,10 @@ const IsLoggedIn = () => {
     <div>
       {isLoggedIn ? (
         <div>
-          <span>You are logged in</span>
           <button onClick={logout} className="grid">Log Out</button>
         </div>
       ) : (
-        <span>Please log in</span>
+          <Link href="/authenticate">Login</Link> 
       )}
     </div>
   );

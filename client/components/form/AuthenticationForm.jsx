@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const AuthenticationForm = () => {
   const [username, setUsername] = useState("");
@@ -79,6 +80,15 @@ const AuthenticationForm = () => {
             Authenticate
           </button>
           {error && <p className="mt-3 text-red-500">{error}</p>}
+          <p className="mt-6 text-center text-sm">
+            Dont have an account?{" "}
+            <Link
+              href="/register"
+              className="text-blue-500 hover:text-blue-800 underline"
+            >
+              Signup
+            </Link>
+          </p>
         </form>
       </div>
     </div>
