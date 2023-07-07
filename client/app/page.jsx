@@ -1,4 +1,4 @@
-import NavBar from "@/components/nav/navbar"
+import NavBar from "../components/nav/NavBar"
 
 const page = () => {
   return (
