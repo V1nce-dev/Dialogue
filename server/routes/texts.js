@@ -2,6 +2,15 @@ const express = require("express");
 const router = express.Router();
 const Text = require("../model/textmodel");
 
+router.get("/", async (_, res) => {
+    try {
+        const text = await Text.find();
+        res.json(text);
+    } catch (error) {
+        return res.status(500).json({ message: "Cannot get post" })
+    }
+})
+
 router.post("/", async (req, res) => {
     try {
         const text = new Text({ text: req.body.text });

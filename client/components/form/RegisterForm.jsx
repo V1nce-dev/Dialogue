@@ -14,7 +14,7 @@ const RegisterForm = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        `https://dialogue-api.vercel.app/api/users/register`,
+        "https://dialogue-api.vercel.app/api/users/register",
         {
           method: "POST",
           headers: {

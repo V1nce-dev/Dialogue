@@ -1,37 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
 
-const IsLoggedIn = () => {
+const useIsLoggedIn = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const checkToken = () => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-  };
-
   useEffect(() => {
-    checkToken();
-    window.addEventListener("storage", checkToken);
-    return () => window.removeEventListener("storage", checkToken);
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-  };
-
-  return (
-    <div>
-      {isLoggedIn ? (
-        <div>
-          <button onClick={logout} className="grid">Log Out</button>
-        </div>
-      ) : (
-          <Link href="/authenticate">Login</Link> 
-      )}
-    </div>
-  );
+  return isLoggedIn;
 };
 
-export default IsLoggedIn;
+export default useIsLoggedIn;

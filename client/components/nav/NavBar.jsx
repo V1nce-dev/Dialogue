@@ -1,11 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import IsLoggedIn from "../home/UserLoggedIn";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const isLoggedIn = IsLoggedIn();
 
   const toggleOpen = () => setIsOpen(!isOpen);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <nav className="flex items-center justify-between p-6 drop-shadow-lg bg-black">
@@ -29,11 +35,13 @@ const Navbar = () => {
         {isOpen && (
           <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white">
             <div className="m-1 pl-2 hover:underline rounded-md">
-            <IsLoggedIn />
+              {isLoggedIn ? (
+                <Link href="/authenticate" onClick={handleLogout}>Logout</Link>
+              ) : (
+                <Link href="/authenticate">Login</Link>
+              )}
             </div>
-            <div className="m-1 pl-2 hover:underline rounded-md">
-              Search
-            </div>
+            <div className="m-1 pl-2 hover:underline rounded-md">Search</div>
           </div>
         )}
       </div>
