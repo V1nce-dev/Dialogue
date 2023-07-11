@@ -8,7 +8,7 @@ const TextForm = () => {
     const isLoggedIn = IsLoggedIn();
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/post/")
+        fetch("https://dialogue-api.vercel.app/api/post/")
             .then(response => response.json())
             .then(data => setTexts(data))
             .catch(error => console.error("Error:", error));
@@ -22,7 +22,7 @@ const TextForm = () => {
             return;
         }
 
-        fetch("http://localhost:8080/api/post/", {
+        fetch("https://dialogue-api.vercel.app/api/post/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
